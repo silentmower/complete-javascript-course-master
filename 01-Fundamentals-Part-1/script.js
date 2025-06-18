@@ -23,3 +23,7 @@
 
 // console.log(typeof null)
 
+// const birthYear = 2004;
+// console.log(birthYear);
+
+// birthYear = 2000; 
