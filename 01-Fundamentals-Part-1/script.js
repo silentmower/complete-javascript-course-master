@@ -51,17 +51,49 @@
 
 // const isFullYear = ageAnia >= 18;
 
-const now = 2025;
-const ageJanek = now - 1995;
-const ageAnia = now - 2007;
+// const firstName = "Janek";
+// const job = "teacher";
+// const birthYear = 1995;
+// const year = 2025;
 
-console.log(now - 1995 > now - 2007);
+// const janek = "I'm " + firstName + ", a " + 
+// (year - birthYear) + ' years old ' + job + ' !';
 
-let x,y;
-x = y = 25 - 10 - 5;
-console.log(x,y);
+// console.log(janek);
 
-const averageAge = (ageJanek + ageAnia) / 2;
-console.log(ageJanek, ageAnia, averageAge);
+// const newJanek = `I'm ${firstName}, a ${year - birthYear} year old ${job}`;
+//  console.log(newJanek);
+
+// const age = 10;
+
+
+// if(age>=18) {
+//     console.log("Janek can start driving license");
+// }
+// else{
+//     const yearsLeft = 18 - age;
+//     console.log(`Janek is too young. He must wait another ${yearsLeft} years`);
+// };
+
+
+
+// const promptNumber = Number(prompt("What is your favourite number?"));
+
+// console.log(promptNumber);
+
+// if(promptNumber === 7) console.log("7 is great number!");
+// else if(promptNumber === 9) console.log("9 is great number!");
+// if(promptNumber === 3) console.log("3 is great number!");
+// else console.log(`u choosed number:${promptNumber}`);
+
+// if(promptNumber !== 7) console.log("you should choos 7!");
+
+
+// const hasDriverLicense = true;
+// const hasGoodVision = true;
+// const isTired = true;
+
+// if(hasDriverLicense && hasGoodVision && !isTired) console.log("can drive");
+// else console.log("CAN'T DRIVE");
 
 
