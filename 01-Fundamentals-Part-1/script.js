@@ -97,3 +97,27 @@
 // else console.log("CAN'T DRIVE");
 
 
+// const day = prompt("What day is today?");
+
+// switch(day){
+//     case '1':
+//         console.log("1");
+//         break;
+//     case '2':
+//             console.log("2");
+//             break;
+//     case '3':
+//     case '4':
+//             console.log("3 or 4");
+//             break;
+//     default:
+//         console.log("its not 1 2 3 or 4");
+
+// }
+
+
+const bill = 250;
+
+const tip = bill >=50 && bill <= 300 ? bill*0.15 : bill*0.1;
+
+console.log(`bill:${bill} tip: ${tip} bill+tip: ${bill+tip}`);
