@@ -63,24 +63,20 @@
 
 // console.log(fruitProcessor(2,3));
 
-const friends = ['Filip', 'Piotr', 'Kamil', 'Jakub'];
-console.log(friends);
-const years = new Array(1995, 2000, 2010);
-console.log(years);
+// 
 
-friends.push("Hubert");
-console.log(friends);
+const filip = {
+    firstName: 'Filip',
+    birthYear: 2004,
+    hobby: 'proggraming',
 
-friends.unshift("Tomek");
-console.log(friends);
+    calcAge: function(){
+        this.age = 2025 - this.birthYear;
+        return this.age;
+    }
+}
 
-friends.pop();
-console.log(friends);
+console.log(filip);
 
-friends.shift();
-console.log(friends);
-
-if(friends.length > 3) console.log("wow u have 3 frinds or more!");
-
-
-
+filip.calcAge();
+console.log(`Hello, i'm ${filip.firstName}, ${filip.age} years old ${filip.hobby}`);
