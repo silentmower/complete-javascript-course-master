@@ -65,18 +65,37 @@
 
 // 
 
-const filip = {
-    firstName: 'Filip',
-    birthYear: 2004,
-    hobby: 'proggraming',
+// const filip = {
+//     firstName: 'Filip',
+//     birthYear: 2004,
+//     hobby: 'proggraming',
 
-    calcAge: function(){
-        this.age = 2025 - this.birthYear;
-        return this.age;
-    }
+//     calcAge: function(){
+//         this.age = 2025 - this.birthYear;
+//         return this.age;
+//     }
+// }
+
+// console.log(filip);
+
+// filip.calcAge();
+// console.log(`Hello, i'm ${filip.firstName}, ${filip.age} years old ${filip.hobby}`);
+
+const friends=['Janek', 'Tomek', 'Piotrek'];
+const typeOfFriends = [];
+
+for(let i = 0; i < friends.length; i++){
+    console.log(friends[i]);
+    typeOfFriends[i] = typeof(friends[i]);
+    console.log(typeOfFriends[i]);
 }
 
-console.log(filip);
 
-filip.calcAge();
-console.log(`Hello, i'm ${filip.firstName}, ${filip.age} years old ${filip.hobby}`);
+let dice = Math.floor((Math.random() * 6) +1);
+
+while(dice !== 6){
+    console.log(`you diced a ${dice}`);
+    dice = Math.floor((Math.random() * 6) +1);
+    if(dice === 6) console.log(`U got 6, it's going to end`);
+
+}
