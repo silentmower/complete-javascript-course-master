@@ -50,17 +50,64 @@
 //   console.log("hejka");
 // }
 
-const temperatures1 = [17, 21, 23];
-const temperatures2 = [12, 5, -5, 0, 4];
+//CHALLENGE 1
+// const temperatures1 = [17, 21, 23];
+// const temperatures2 = [12, 5, -5, 0, 4];
 
-const printForecast = function (arr) {
-  let str = '';
+// const printForecast = function (arr) {
+//   let str = '';
+//   for (let i = 0; i < arr.length; i++) {
+//     str = str + ` ${arr[i]} in ${i + 1} days .... `;
+//   }
+
+//   console.log('...' + str);
+// };
+
+// printForecast(temperatures1);
+// printForecast(temperatures2);
+
+//CHALLENGE 2
+
+const data = [7.5, 8, 6.5, 0, 8.5, 4, 0];
+
+const timeTracking = function (arr) {
+  let sum = 0;
+  let workedDays = 0;
+  let max = 0;
   for (let i = 0; i < arr.length; i++) {
-    str = str + ` ${arr[i]} in ${i + 1} days .... `;
+    sum += arr[i];
+    if (arr[i] > 0) workedDays += 1;
+    if(arr[i] > max)max = i;
   }
 
-  console.log('...' + str);
+  console.log('Total hourse worked:' + sum);
+  console.log('Averange daily hours:' + sum / arr.length);
+switch(max){
+    case 0:
+        console.log("The day with the most hours worked: Monday");
+        break;
+        case 1:
+        console.log("The day with the most hours worked: Tuesday");
+        break;
+        case 2:
+        console.log("The day with the most hours worked: Wednesday");
+        break;
+        case 3:
+        console.log("The day with the most hours worked: Thursday");
+        break;
+        case 4:
+        console.log("The day with the most hours worked: Friday");
+        break;
+        case 5:
+        console.log("The day with the most hours worked: Saturday");
+        break;
+        case 6:
+        console.log("The day with the most hours worked: Sunday");
+        break;
+
+}
+  console.log('Number of days worked:' + workedDays);
+  if (sum >= 35) crossOriginIsolated.log('The week was full-time');
 };
 
-printForecast(temperatures1);
-printForecast(temperatures2);
+timeTracking(data);
