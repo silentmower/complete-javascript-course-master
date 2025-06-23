@@ -34,12 +34,33 @@
 // const amplitude = calcTempAmplitude(temperatures1, temperatures2);
 // console.log(amplitude);
 
-let num = Number(prompt('podaj liczbe'));
-let promptNumbers = [];
+// let num = Number(prompt('podaj liczbe'));
+// let promptNumbers = [];
 
-while (num !== 0) {
-  promptNumbers.push(num);
-  num = Number(prompt('podaj liczbe'));
-}
+// while (num !== 0) {
+//   promptNumbers.push(num);
+//   num = Number(prompt('podaj liczbe'));
+// }
 
-console.log(promptNumbers);
+// console.log(promptNumbers);
+
+// let numP = prompt("podaj liczbe: ");
+
+// for(let i = 0; i < numP; i++){
+//   console.log("hejka");
+// }
+
+const temperatures1 = [17, 21, 23];
+const temperatures2 = [12, 5, -5, 0, 4];
+
+const printForecast = function (arr) {
+  let str = '';
+  for (let i = 0; i < arr.length; i++) {
+    str = str + ` ${arr[i]} in ${i + 1} days .... `;
+  }
+
+  console.log('...' + str);
+};
+
+printForecast(temperatures1);
+printForecast(temperatures2);
