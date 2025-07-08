@@ -114,22 +114,28 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(arr3.slice(-1)[0]);
 // console.log(arr3.at(-1));
 
-for (const movement of movements){
-  if(movement > 0){
+for (const movement of movements) {
+  if (movement > 0) {
     console.log(`You deposited ${movement}`);
-  }else{
+  } else {
     console.log(`You withdrew ${Math.abs(movement)}`);
   }
 }
 
+console.log("forEach:");
+movements.forEach(function (mov, i, arr) {
+  if (mov > 0) {
+    console.log(`Movement ${i + 1} You deposited ${mov}`);
+  } else {
+    console.log(`Movement ${i + 1} You withdrew ${Math.abs(mov)}`);
+  }
+});
 
 console.log("forEach:");
-movements.forEach(function(mov, i, arr) {
-  if(mov > 0){
-    console.log(`Movement ${i +1} You deposited ${mov}`);
-  }else{
-    console.log(`Movement ${i +1} You withdrew ${Math.abs(mov)}`);
+movements.forEach(function (mov, i, arr) {
+  if (mov > 0) {
+    console.log(`Movement ${i + 1} You deposited ${mov}`);
+  } else {
+    console.log(`Movement ${i + 1} You withdrew ${Math.abs(mov)}`);
   }
-
-})
-
+});
