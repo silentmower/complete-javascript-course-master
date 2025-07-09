@@ -73,6 +73,24 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = "";
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? "deposit" : "withdrawal";
+
+    const html = `
+    <div class="movements__row">
+          <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+          <div class="movements__value">${mov}</div>
+        </div>`;
+
+    containerMovements.insertAdjacentHTML("afterbegin", html);
+  });
+};
+displayMovements(account1.movements);
+
 /////////////////////////////////////////////////
 
 // let arr = ["a", "b", "c", "d", "e"];
@@ -114,28 +132,32 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(arr3.slice(-1)[0]);
 // console.log(arr3.at(-1));
 
-for (const movement of movements) {
-  if (movement > 0) {
-    console.log(`You deposited ${movement}`);
-  } else {
-    console.log(`You withdrew ${Math.abs(movement)}`);
-  }
-}
+// for (const movement of movements) {
+//   if (movement > 0) {
+//     console.log(`You deposited ${movement}`);
+//   } else {
+//     console.log(`You withdrew ${Math.abs(movement)}`);
+//   }
+// }
 
-console.log("forEach:");
-movements.forEach(function (mov, i, arr) {
-  if (mov > 0) {
-    console.log(`Movement ${i + 1} You deposited ${mov}`);
-  } else {
-    console.log(`Movement ${i + 1} You withdrew ${Math.abs(mov)}`);
-  }
-});
+// //forEach with array
+// console.log("forEach:");
+// movements.forEach(function (mov, i, arr) {
+//   if (mov > 0) {
+//     console.log(`Movement ${i + 1} You deposited ${mov}`);
+//   } else {
+//     console.log(`Movement ${i + 1} You withdrew ${Math.abs(mov)}`);
+//   }
+// });
 
-console.log("forEach:");
-movements.forEach(function (mov, i, arr) {
-  if (mov > 0) {
-    console.log(`Movement ${i + 1} You deposited ${mov}`);
-  } else {
-    console.log(`Movement ${i + 1} You withdrew ${Math.abs(mov)}`);
-  }
-});
+// //forEach with map
+// currencies.forEach(function (value, key, map) {
+//   console.log(`${key}: ${value}`);
+// });
+
+// // forEach with set
+// const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
+// console.log(currenciesUnique);
+// currenciesUnique.forEach(function (value, _, map) {
+//   console.log(`${value}: ${value}`);
+// });
