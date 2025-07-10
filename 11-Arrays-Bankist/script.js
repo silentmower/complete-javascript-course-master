@@ -73,6 +73,7 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+// dipslay transactions
 const displayMovements = function (movements) {
   containerMovements.innerHTML = "";
   movements.forEach(function (mov, i) {
@@ -91,12 +92,34 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+// making usernames and adding it to accounts objects
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLocaleLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join("");
+  });
+};
+
+createUsernames(accounts);
+
+// calcualte and prit balance
+
+const calcPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcPrintBalance(account1.movements);
+
 /////////////////////////////////////////////////
 
 // let arr = ["a", "b", "c", "d", "e"];
 
 // // slice method
-// console.log(arr.slice(2, 4));
+// console.log(arr.slice(2, 4)); 
 // console.log(arr.slice(-2));
 // console.log(arr.slice(-1));
 // console.log(arr.slice(1, -1));
