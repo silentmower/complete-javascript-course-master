@@ -92,6 +92,32 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+// dislplay summery on bottom of page
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+
+  labelSumIn.textContent = `${incomes}€`;
+
+  const outcomes = movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+
+  labelSumOut.textContent = `${Math.abs(outcomes)}€`;
+
+  const interest = movements
+    .filter((mov) => mov > 0)
+    .map((mov) => (mov * 1.2) / 100)
+    .filter((int, i, arr) => int >= 1)
+    .reduce((acc, int) => acc + int, 0);
+
+  labelSumInterest.textContent = `${interest}€`;
+};
+
+calcDisplaySummary(account1.movements);
+
 // making usernames and adding it to accounts objects
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -119,7 +145,7 @@ calcPrintBalance(account1.movements);
 // let arr = ["a", "b", "c", "d", "e"];
 
 // // slice method
-// console.log(arr.slice(2, 4)); 
+// console.log(arr.slice(2, 4));
 // console.log(arr.slice(-2));
 // console.log(arr.slice(-1));
 // console.log(arr.slice(1, -1));
