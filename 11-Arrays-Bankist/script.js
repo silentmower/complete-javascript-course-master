@@ -189,6 +189,41 @@ btnTransfer.addEventListener("click", function (e) {
   inputTransferAmount.value = inputTransferTo.value = "";
 });
 
+// Loan functionality
+btnLoan.addEventListener("click", function (e) {
+  e.defaultPrevented();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (
+    amount > 0 &&
+    currentAccount.movements.some((mov) => mov >= amount / 10)
+  ) {
+    currentAccount, movements.push(amount);
+
+    updateUI(currentAccount);
+  }
+  inputLoanAmount = "";
+});
+
+// delate account
+btnClose.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  if (
+    currentAccount.username === inputCloseUsername.value &&
+    currentAccount.pin === Number(inputClosePin.value)
+  ) {
+    const index = accounts.findIndex(
+      (acc) => acc.username === currentAccount.username
+    );
+    accounts.splice(index, 1);
+
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = "";
+});
+
 /////////////////////////////////////////////////
 
 // let arr = ["a", "b", "c", "d", "e"];
