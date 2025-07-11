@@ -74,9 +74,12 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // dipslay transactions
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = "";
-  movements.forEach(function (mov, i) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
     const html = `
@@ -191,7 +194,7 @@ btnTransfer.addEventListener("click", function (e) {
 
 // Loan functionality
 btnLoan.addEventListener("click", function (e) {
-  e.defaultPrevented();
+  e.preventDefault();
 
   const amount = Number(inputLoanAmount.value);
 
@@ -199,11 +202,11 @@ btnLoan.addEventListener("click", function (e) {
     amount > 0 &&
     currentAccount.movements.some((mov) => mov >= amount / 10)
   ) {
-    currentAccount, movements.push(amount);
-
+    currentAccount.movements.push(amount);
+ 
     updateUI(currentAccount);
   }
-  inputLoanAmount = "";
+  inputLoanAmount.value = "";
 });
 
 // delate account
@@ -224,73 +227,13 @@ btnClose.addEventListener("click", function (e) {
   inputCloseUsername.value = inputClosePin.value = "";
 });
 
-/////////////////////////////////////////////////
+// sort functionality
 
-// let arr = ["a", "b", "c", "d", "e"];
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
 
-// // slice method
-// console.log(arr.slice(2, 4));
-// console.log(arr.slice(-2));
-// console.log(arr.slice(-1));
-// console.log(arr.slice(1, -1));
-
-// // splice method
-
-// console.log(arr.splice(1, 2));
-// console.log(arr);
-// arr.splice(-1);
-// console.log(arr);
-
-// // reverse method
-// arr = ["a", "b", "c", "d", "e"];
-// const arr2 = ["j", "i", "h", "g", "f"];
-// console.log(arr2.reverse());
-// console.log(arr2);
-
-// // concat method
-
-// const letters = arr.concat(arr2);
-// console.log(letters);
-// console.log([...arr, ...arr2]);
-
-// //join method
-
-// console.log(letters.join('-'));
-
-// // at method
-// const arr3 = [23, 11, 64];
-// console.log(arr3[0]);
-// console.log(arr3.at(0));
-// console.log(arr3[arr3.length -1 ]);
-// console.log(arr3.slice(-1)[0]);
-// console.log(arr3.at(-1));
-
-// for (const movement of movements) {
-//   if (movement > 0) {
-//     console.log(`You deposited ${movement}`);
-//   } else {
-//     console.log(`You withdrew ${Math.abs(movement)}`);
-//   }
-// }
-
-// //forEach with array
-// console.log("forEach:");
-// movements.forEach(function (mov, i, arr) {
-//   if (mov > 0) {
-//     console.log(`Movement ${i + 1} You deposited ${mov}`);
-//   } else {
-//     console.log(`Movement ${i + 1} You withdrew ${Math.abs(mov)}`);
-//   }
-// });
-
-// //forEach with map
-// currencies.forEach(function (value, key, map) {
-//   console.log(`${key}: ${value}`);
-// });
-
-// // forEach with set
-// const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
-// console.log(currenciesUnique);
-// currenciesUnique.forEach(function (value, _, map) {
-//   console.log(`${value}: ${value}`);
-// });
+ 
