@@ -49,7 +49,7 @@ const restaurant = {
     return [this.starterMenu[starterInex], this.mainMenu[mainIndex]];
   },
 
-  orderDelivery: function ({time, addres, mainIndex, starterIndex}) {
+  orderDelivery: function ({time = '19:00', addres, mainIndex =0, starterIndex=0}) {
     console.log(
       `Order recived! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${addres} at ${time}`
     );
@@ -88,6 +88,10 @@ restaurant.orderDelivery({
   addres: "Via del Sole 7",
   mainIndex: 2,
   starterIndex: 2,
+});
+restaurant.orderDelivery({
+  time: `12:00`,
+  addres: "KaufStrasse 7",
 });
 //Destructing arrays
 
