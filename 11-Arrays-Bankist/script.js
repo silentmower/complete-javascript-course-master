@@ -203,7 +203,7 @@ btnLoan.addEventListener("click", function (e) {
     currentAccount.movements.some((mov) => mov >= amount / 10)
   ) {
     currentAccount.movements.push(amount);
- 
+
     updateUI(currentAccount);
   }
   inputLoanAmount.value = "";
@@ -225,15 +225,14 @@ btnClose.addEventListener("click", function (e) {
     containerApp.style.opacity = 0;
   }
   inputCloseUsername.value = inputClosePin.value = "";
+  labelWelcome.textContent = "Login to get started";
 });
 
 // sort functionality
-  
+
 let sorted = false;
 btnSort.addEventListener("click", function (e) {
   e.preventDefault();
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
 });
-
- 
