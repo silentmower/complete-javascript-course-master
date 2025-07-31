@@ -74,31 +74,52 @@ const restaurant = {
   },
 };
 
-// Enchanted object literals
+// Optional chaining
+if (restaurant.openingHours && restaurant.openingHours.mon) {
+  console.log(restaurant.openingHours.mon.open);
+}
 
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? "closed";
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+console.log(restaurant.order?.(0, 1) ?? "Metod does not exist");
+console.log(restaurant.orderRisotto?.(0, 1) ?? "Metod does not exist");
+
+const users = [
+  {name: "Filip", email: "hehehe@gmail"}
+];
+
+console.log(users[0]?.name ?? 'User array empty')
 // Looping arrays (cant continue and brake)
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-for (const item of menu) console.log(item);
+// for (const item of menu) console.log(item);
 
-for (const item of menu.entries()) {
-  console.log(item);
-}
+// for (const item of menu.entries()) {
+//   console.log(item);
+// }
 
-for (const [i, el] of menu.entries()) {
-  console.log(`${i + 1}: ${el}`);
-}
+// for (const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}: ${el}`);
+// }
 // Logical assigment operator
-const rest1 = {
-  name: "Capri",
-  numGuests: 0,
-};
+// const rest1 = {
+//   name: "Capri",
+//   numGuests: 0,
+// };
 
-const rest2 = {
-  name: "La Pizzna",
-  owner: "Giovani rossi",
-};
+// const rest2 = {
+//   name: "La Pizzna",
+//   owner: "Giovani rossi",
+// };
 
 // rest1.numGuests = rest1.numGuests || 10;
 // rest2.numGuests = rest2.numGuests || 10;
@@ -106,15 +127,15 @@ const rest2 = {
 // rest1.numGuests ||= 10;
 // rest2.numGuests ||= 10;
 
-rest1.numGuests ??= 10;
-rest2.numGuests ??= 10;
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
 
 // rest2.owner = rest2.owner && "<ANNONYMOUS>";
 
-rest2.owner &&= "<ANNONYMOUS>";
+// rest2.owner &&= "<ANNONYMOUS>";
 
-console.log(rest1);
-console.log(rest2);
+// console.log(rest1);
+// console.log(rest2);
 // // Nullish ooerator (null and undefined, NOT 0 or '')
 // restaurant.numGuest = 0;
 // const guestCorrect = restaurant.numGuest ?? 10;
