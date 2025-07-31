@@ -22,6 +22,22 @@ const mexicanFoods = new Set([
   "garlic",
 ]);
 
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 // Data needed for first part of the section
 const restaurant = {
   name: "Classico Italiano",
@@ -30,20 +46,8 @@ const restaurant = {
   starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
   mainMenu: ["Pizza", "Pasta", "Risotto"],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  // ES6 enchanted object literals
+  openingHours,
 
   order: function (starterInex, mainIndex) {
     return [this.starterMenu[starterInex], this.mainMenu[mainIndex]];
@@ -70,36 +74,77 @@ const restaurant = {
   },
 };
 
-// Nullish ooerator (null and undefined, NOT 0 or '')
-restaurant.numGuest = 0;
-const guestCorrect = restaurant.numGuest ?? 10;
-console.log(guestCorrect);//0
+// Enchanted object literals
 
-// Short circuting 
-console.log(3 || "Filip"); //3
-console.log(true || 0); //true
-console.log(undefined || null); //null
-console.log("" || "Filip"); //Filip
+// Looping arrays (cant continue and brake)
 
-console.log(undefined || 0 || "" || "Hello" || 23 || null); //Hello
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-restaurant.numGuest = 0;
-const guests1 = restaurant.numGuest ? restaurant.numGuest : 10;
-console.log(guests1); //10
+for (const item of menu) console.log(item);
 
-const guests2 = restaurant.numGuest || 10;
-console.log(guests2); //10
-
-console.log(0 && "Filip"); //0
-console.log(7 && "Filip"); //Filip
-
-console.log("Hello" && 23 && null && "Filip"); //null
-
-if (restaurant.orderPizza) {
-  restaurant.orderPizza("mushroooms", "spinach");
+for (const item of menu.entries()) {
+  console.log(item);
 }
 
-restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+// Logical assigment operator
+const rest1 = {
+  name: "Capri",
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: "La Pizzna",
+  owner: "Giovani rossi",
+};
+
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// rest2.owner = rest2.owner && "<ANNONYMOUS>";
+
+rest2.owner &&= "<ANNONYMOUS>";
+
+console.log(rest1);
+console.log(rest2);
+// // Nullish ooerator (null and undefined, NOT 0 or '')
+// restaurant.numGuest = 0;
+// const guestCorrect = restaurant.numGuest ?? 10;
+// console.log(guestCorrect);//0
+
+// // Short circuting
+// console.log(3 || "Filip"); //3
+// console.log(true || 0); //true
+// console.log(undefined || null); //null
+// console.log("" || "Filip"); //Filip
+
+// console.log(undefined || 0 || "" || "Hello" || 23 || null); //Hello
+
+// restaurant.numGuest = 0;
+// const guests1 = restaurant.numGuest ? restaurant.numGuest : 10;
+// console.log(guests1); //10
+
+// const guests2 = restaurant.numGuest || 10;
+// console.log(guests2); //10
+
+// console.log(0 && "Filip"); //0
+// console.log(7 && "Filip"); //Filip
+
+// console.log("Hello" && 23 && null && "Filip"); //null
+
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza("mushroooms", "spinach");
+// }
+
+// restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
 
 //Spread operator
 // const arr = [3, 5, 7];
