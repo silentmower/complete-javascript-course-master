@@ -74,30 +74,53 @@ const restaurant = {
   },
 };
 
+// looping objets
+
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open ${properties.length} days: `;
+
+for (const day of properties) {
+  openStr += `${day} `;
+}
+
+console.log(openStr);
+
+const values = Object.values(openingHours);
+console.log(values);
+
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for (const [key, {open, close}] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+
 // Optional chaining
-if (restaurant.openingHours && restaurant.openingHours.mon) {
-  console.log(restaurant.openingHours.mon.open);
-}
+// if (restaurant.openingHours && restaurant.openingHours.mon) {
+//   console.log(restaurant.openingHours.mon.open);
+// }
 
-console.log(restaurant.openingHours.mon?.open);
-console.log(restaurant.openingHours?.mon?.open);
+// console.log(restaurant.openingHours.mon?.open);
+// console.log(restaurant.openingHours?.mon?.open);
 
-const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+// const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
-for (const day of days) {
-  const open = restaurant.openingHours[day]?.open ?? "closed";
-  console.log(`On ${day}, we open at ${open}`);
-}
+// for (const day of days) {
+//   const open = restaurant.openingHours[day]?.open ?? "closed";
+//   console.log(`On ${day}, we open at ${open}`);
+// }
 
-console.log(restaurant.order?.(0, 1) ?? "Metod does not exist");
-console.log(restaurant.orderRisotto?.(0, 1) ?? "Metod does not exist");
+// console.log(restaurant.order?.(0, 1) ?? "Metod does not exist");
+// console.log(restaurant.orderRisotto?.(0, 1) ?? "Metod does not exist");
 
-const users = [
-  {name: "Filip", email: "hehehe@gmail"}
-];
+// const users = [
+//   {name: "Filip", email: "hehehe@gmail"}
+// ];
 
-console.log(users[0]?.name ?? 'User array empty')
-// Looping arrays (cant continue and brake)
+// console.log(users[0]?.name ?? 'User array empty')
+// // Looping arrays (cant continue and brake)
 
 // const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
