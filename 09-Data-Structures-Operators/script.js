@@ -4,24 +4,6 @@
 const flights =
   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 
-const italianFoods = new Set([
-  "pasta",
-  "gnocchi",
-  "tomatoes",
-  "olive oil",
-  "garlic",
-  "basil",
-]);
-
-const mexicanFoods = new Set([
-  "tortillas",
-  "beans",
-  "rice",
-  "tomatoes",
-  "avocado",
-  "garlic",
-]);
-
 const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 const openingHours = {
   [weekdays[3]]: {
@@ -74,28 +56,104 @@ const restaurant = {
   },
 };
 
+// Maps
+
+
+// Sets
+const ordersSet = new Set([
+  "Pasta",
+  "Pizza",
+  "Pizza",
+  "Risotto",
+  "Pasta",
+  "pasta",
+]);
+console.log(ordersSet);
+
+console.log(new Set("Filip"));
+
+console.log(ordersSet.size);
+
+console.log(ordersSet.has("Pizza"));
+
+console.log(ordersSet.has("Bread"));
+
+ordersSet.add("Bread");
+ordersSet.delete("Risotto");
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+ordersSet.clear();
+console.log(ordersSet);
+
+const staff = ["Waiter", "Chef", "Waiter", " Manager", "Chef", "Waiter"];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(
+  new Set(["Waiter", "Chef", "Waiter", " Manager", "Chef", "Waiter"]).size
+);
+
+// Operatiions on sets
+
+const italianFoods = new Set([
+  "pasta",
+  "gnocchi",
+  "tomatoes",
+  "olive oil",
+  "garlic",
+  "basil",
+]);
+
+const mexicanFoods = new Set([
+  "tortillas",
+  "beans",
+  "rice",
+  "tomatoes",
+  "avocado",
+  "garlic",
+]);
+
+const commonFoods = italianFoods.intersection(mexicanFoods);
+console.log("Intersection:", commonFoods);
+console.log([...commonFoods]);
+
+const italianMexicanFusion = italianFoods.union(mexicanFoods);
+console.log("Union:", italianMexicanFusion);
+
+const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
+console.log("difference Italian:", uniqueItalianFoods);
+
+const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
+console.log("difference Mexican:", uniqueMexicanFoods);
+
+const uniqueItalianAndMexicanFoods =
+  italianFoods.symmetricDifference(mexicanFoods);
+console.log(uniqueItalianAndMexicanFoods);
+
+console.log(italianFoods.isDisjointFrom(mexicanFoods));
 // looping objets
 
-const properties = Object.keys(openingHours);
-console.log(properties);
+// const properties = Object.keys(openingHours);
+// console.log(properties);
 
-let openStr = `We are open ${properties.length} days: `;
+// let openStr = `We are open ${properties.length} days: `;
 
-for (const day of properties) {
-  openStr += `${day} `;
-}
+// for (const day of properties) {
+//   openStr += `${day} `;
+// }
 
-console.log(openStr);
+// console.log(openStr);
 
-const values = Object.values(openingHours);
-console.log(values);
+// const values = Object.values(openingHours);
+// console.log(values);
 
-const entries = Object.entries(openingHours);
-console.log(entries);
+// const entries = Object.entries(openingHours);
+// console.log(entries);
 
-for (const [key, {open, close}] of entries) {
-  console.log(`On ${key} we open at ${open} and close at ${close}`);
-}
+// for (const [key, {open, close}] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
 
 // Optional chaining
 // if (restaurant.openingHours && restaurant.openingHours.mon) {
