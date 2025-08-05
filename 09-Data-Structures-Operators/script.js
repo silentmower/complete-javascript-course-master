@@ -58,80 +58,127 @@ const restaurant = {
 
 // Maps
 
+const rest = new Map();
+rest.set("name", "Classico Italiano");
+rest.set(1, "Firenze, Italy");
+console.log(rest.set(2, "Lisbon, Portugal"));
 
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are open :D")
+  .set(false, "We are close :(");
+
+console.log(rest.get("name"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 21;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+console.log(rest.has("categories"));
+rest.delete(2);
+console.log(rest);
+console.log(rest.size);
+rest.clear();
+
+rest.set([1, 2], "Test");
+rest.set(document.querySelector("h1"), "Heading");
+console.log(rest);
+
+// Maps iterations
+
+const question = new Map([
+  ["question", "What is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, " JavaScript"],
+  ["correct", 3],
+  [true, "Correct"],
+  [false, "Try again"],
+]);
+
+console.log(question);
+
+for (const [key, value] of question){
+  if(typeof key === 'number') {
+    console.log
+  }
+}
 // Sets
-const ordersSet = new Set([
-  "Pasta",
-  "Pizza",
-  "Pizza",
-  "Risotto",
-  "Pasta",
-  "pasta",
-]);
-console.log(ordersSet);
+// const ordersSet = new Set([
+//   "Pasta",
+//   "Pizza",
+//   "Pizza",
+//   "Risotto",
+//   "Pasta",
+//   "pasta",
+// ]);
+// console.log(ordersSet);
 
-console.log(new Set("Filip"));
+// console.log(new Set("Filip"));
 
-console.log(ordersSet.size);
+// console.log(ordersSet.size);
 
-console.log(ordersSet.has("Pizza"));
+// console.log(ordersSet.has("Pizza"));
 
-console.log(ordersSet.has("Bread"));
+// console.log(ordersSet.has("Bread"));
 
-ordersSet.add("Bread");
-ordersSet.delete("Risotto");
-console.log(ordersSet);
+// ordersSet.add("Bread");
+// ordersSet.delete("Risotto");
+// console.log(ordersSet);
 
-for (const order of ordersSet) console.log(order);
+// for (const order of ordersSet) console.log(order);
 
-ordersSet.clear();
-console.log(ordersSet);
+// ordersSet.clear();
+// console.log(ordersSet);
 
-const staff = ["Waiter", "Chef", "Waiter", " Manager", "Chef", "Waiter"];
-const staffUnique = [...new Set(staff)];
-console.log(staffUnique);
-console.log(
-  new Set(["Waiter", "Chef", "Waiter", " Manager", "Chef", "Waiter"]).size
-);
+// const staff = ["Waiter", "Chef", "Waiter", " Manager", "Chef", "Waiter"];
+// const staffUnique = [...new Set(staff)];
+// console.log(staffUnique);
+// console.log(
+//   new Set(["Waiter", "Chef", "Waiter", " Manager", "Chef", "Waiter"]).size
+// );
 
-// Operatiions on sets
+// // Operatiions on sets
 
-const italianFoods = new Set([
-  "pasta",
-  "gnocchi",
-  "tomatoes",
-  "olive oil",
-  "garlic",
-  "basil",
-]);
+// const italianFoods = new Set([
+//   "pasta",
+//   "gnocchi",
+//   "tomatoes",
+//   "olive oil",
+//   "garlic",
+//   "basil",
+// ]);
 
-const mexicanFoods = new Set([
-  "tortillas",
-  "beans",
-  "rice",
-  "tomatoes",
-  "avocado",
-  "garlic",
-]);
+// const mexicanFoods = new Set([
+//   "tortillas",
+//   "beans",
+//   "rice",
+//   "tomatoes",
+//   "avocado",
+//   "garlic",
+// ]);
 
-const commonFoods = italianFoods.intersection(mexicanFoods);
-console.log("Intersection:", commonFoods);
-console.log([...commonFoods]);
+// const commonFoods = italianFoods.intersection(mexicanFoods);
+// console.log("Intersection:", commonFoods);
+// console.log([...commonFoods]);
 
-const italianMexicanFusion = italianFoods.union(mexicanFoods);
-console.log("Union:", italianMexicanFusion);
+// const italianMexicanFusion = italianFoods.union(mexicanFoods);
+// console.log("Union:", italianMexicanFusion);
 
-const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
-console.log("difference Italian:", uniqueItalianFoods);
+// const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
+// console.log("difference Italian:", uniqueItalianFoods);
 
-const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
-console.log("difference Mexican:", uniqueMexicanFoods);
+// const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
+// console.log("difference Mexican:", uniqueMexicanFoods);
 
-const uniqueItalianAndMexicanFoods =
-  italianFoods.symmetricDifference(mexicanFoods);
-console.log(uniqueItalianAndMexicanFoods);
+// const uniqueItalianAndMexicanFoods =
+//   italianFoods.symmetricDifference(mexicanFoods);
+// console.log(uniqueItalianAndMexicanFoods);
 
-console.log(italianFoods.isDisjointFrom(mexicanFoods));
+// console.log(italianFoods.isDisjointFrom(mexicanFoods));
 // looping objets
 
 // const properties = Object.keys(openingHours);
