@@ -238,3 +238,11 @@ btnSort.addEventListener("click", function (e) {
 });
 
 
+ // sort functionality
+
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
